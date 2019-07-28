@@ -1,0 +1,16 @@
+doctype
+html(ng-app='app', ng-controller='overlordCtrl', ng-class="getTheme()", konami-code)
+    head
+        title AvianDx
+        link(href="/favicon2.ico", rel="shortcut icon", type="image/x-icon")
+        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+
+
+        link(rel="stylesheet", href="/css/index.css")
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name="description", content="Paw Print Genetics")
+        meta(name="author", content="Taylor Boyd")
+        base(href="/")
+    body(ng-cloak)
+        block main-content
+        include scripts

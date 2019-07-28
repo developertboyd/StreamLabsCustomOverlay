@@ -1,0 +1,220 @@
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+        "100": $gray-100,
+        "200": $gray-200,
+        "300": $gray-300,
+        "400": $gray-400,
+        "500": $gray-500,
+        "600": $gray-600,
+        "700": $gray-700,
+        "800": $gray-800,
+        "900": $gray-900
+), $grays);
+
+$blue: #2E5FA8 !default;
+$light-blue: #5193CF !default;
+$dark-blue: #344857 !default;
+$red: #CC5B55 !default;
+$orange: #f47b40 !default;
+$light-orange: #FAAE35 !default;
+$dark-orange: #DE4F2F !default;
+$yellow: #EACC3D !default;
+$green: #56944f !default;
+$light-green: #7dc276 !default;
+$dark-green: #4a665c !default;
+
+$indigo: #8B394C !default;
+$purple: #746FA8 !default;
+$light-purple: #A9A2F4 !default;
+$dark-purple: #625E8E !default;
+$pink: #C45E8F !default;
+$teal: #2B5759 !default;
+$cyan: #17a2b8 !default;
+
+$colors: () !default;
+$colors: map-merge((
+        "blue": $blue,
+        "indigo": $indigo,
+        "purple": $purple,
+        "pink": $pink,
+        "red": $red,
+        "orange": $orange,
+        "yellow": $yellow,
+        "green": $green,
+        "teal": $teal,
+        "cyan": $cyan,
+        "white": $white,
+        "gray": $gray-600,
+        "gray-dark": $gray-800
+), $colors);
+
+$primary: $light-green !default;
+$secondary: $light-blue !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$default-font: $gray-700 !default;
+$light: $white !default;
+$dark: #1F1F1E !default;
+$hover: darken($primary, 2%);
+$active: darken($primary, 5%);
+$faint-edge-color: transparentize($light, .7);
+$edge-color: transparentize($light, .6);
+$separator-edge-color: transparentize($light, .5);
+$hard-edge-color: transparentize($light, .4);
+
+$themes: (
+        default: (
+                background: $light,
+                backgroundAlt: $gray-100,
+                primaryFontColor: $gray-700,
+                lightFontColor: $gray-100,
+                primaryColor: $orange,
+                accent: $light-orange,
+                deepColor: $dark-orange,
+                stressColor: $red,
+                male: $light-blue,
+                female: $pink
+        )
+);
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+.form-control-themed:focus {
+  color: #495057;
+  background-color: #fff;
+  @include themify($themes) {
+    border-color: themed('accent');
+    box-shadow: 0 0 0 0.2rem transparentize(themed('accent'), .75);
+  }
+
+  outline: 0;
+
+}
+
+.text-themed {
+  @include themify($themes) {
+    color: themed('accent');
+  }
+}
+
+.btn-themed {
+  @include themify($themes) {
+    color: themed('lightFontColor');
+    background-color: themed('accent');
+    border-color: themed('accent');
+  }
+  &:hover {
+    @include themify($themes) {
+      color: themed('lightFontColor');
+      background-color: darken(themed('accent'), 7.5%);
+      border-color: darken(themed('accent'), 10%);
+    }
+  }
+}
+
+.btn-themed:not(:disabled):not(.disabled) {
+  &:active, &.active {
+    @include themify($themes) {
+      color: themed('lightFontColor');
+      background-color: darken(themed('accent'), 10%);
+      border-color: darken(themed('accent'), 12.5%);
+    }
+  }
+}
+
+.show > .btn-themed.dropdown-toggle {
+  @include themify($themes) {
+    color: themed('lightFontColor');
+    background-color: darken(themed('accent'), 10%);
+    border-color: darken(themed('accent'), 12.5%);
+  }
+}
+
+.nav-pills {
+  .nav-link {
+    &.active {
+      @include themify($themes) {
+        color: themed('lightFontColor') !important;
+        background-color: darken(themed('accent'), 10%);
+        border-color: darken(themed('accent'), 12.5%);
+      }
+    }
+    &:hover {
+      @include themify($themes) {
+        color: themed('lightFontColor');
+        background-color: darken(themed('accent'), 7.5%);
+        border-color: darken(themed('accent'), 10%);
+      }
+    }
+  }
+}
+
+.themed-text {
+  @include themify($themes) {
+    color: themed('accent');
+  }
+}
+
+.themed-link {
+  @include themify($themes) {
+    color: themed('accent');
+  }
+  &:hover {
+    @include themify($themes) {
+      color: darken(themed('accent'), 7.5%);
+    }
+  }
+  &:not(:disabled):not(.disabled) {
+    &:active, &.active {
+      @include themify($themes) {
+        color: darken(themed('accent'), 10%);
+      }
+    }
+  }
+}
+
+.themed-hr {
+  @include themify($themes) {
+    background-image: linear-gradient(90deg, themed('primaryColor'), themed('accent'), themed('primaryColor'));
+    background: themed('accent');
+  }
+}
+
+.bg-accent {
+  @include themify($themes) {
+    background-color: themed('accent') !important;
+  }
+}

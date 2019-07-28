@@ -1,0 +1,31 @@
+{
+  "name": "swingface",
+  "description": "SwingFace is an MTG deckbuilder that functions similar to the Hearthstone deck builder",
+  "main": "index.js",
+  "authors": [
+    "Taylor Boyd"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Vannilaknight/SwingFace",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-drag-to-reorder": "^1.0.8",
+    "ng-tags-input": "^3.2.0",
+    "ng-sortable": "^1.3.8",
+    "ng-placement": "../../Personal/NgPlacement",
+    "ng-file-upload": "^12.2.13",
+    "chart.js": "^2.7.3",
+    "angular-slick": "^0.2.1",
+    "braintree-web": "^3.44.2",
+    "angular-auto-complete": "^1.7.4",
+    "algolia-autocomplete.js": "^0.36.0",
+    "bootstrap-select": "^1.13.10",
+    "ng-bootstrap-select": "^0.5.0"
+  }
+}
