@@ -47,7 +47,7 @@
     "request": "^2.75.0",
     "request-progress": "^3.0.0",
     "request-promise": "^4.2.2",
-    "socket.io": "^1.7.2",
+    "socket.io": "^2.4.0",
     "through2": "^2.0.3"
   },
   "devDependencies": {
