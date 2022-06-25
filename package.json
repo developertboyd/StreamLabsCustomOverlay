@@ -42,7 +42,7 @@
     "less": "^3.0.4",
     "magicbus": "^2.3.4",
     "morgan": "^1.9.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "node-sass-middleware": "^0.11.0",
     "request": "^2.75.0",
     "request-progress": "^3.0.0",
