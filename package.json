@@ -30,7 +30,7 @@
     "country-data": "0.0.31",
     "crypto": "0.0.3",
     "dot": "^1.1.2",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-jwt": "^5.3.1",
     "express-jwt-authz": "^2.3.1",
     "express-session": "^1.15.6",
